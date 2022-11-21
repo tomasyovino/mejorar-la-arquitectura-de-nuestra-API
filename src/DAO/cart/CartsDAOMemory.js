@@ -1,5 +1,6 @@
 import MemoryContainer from "../../containers/MemoryDBContainer.js";
 import ProductsDAOMemory from "../product/ProductsDAOMemory.js";
+import { errorLogger } from "../../utils/loggers.js";
 
 let instance = null;
 
@@ -25,7 +26,7 @@ class CartsDAOMemory extends MemoryContainer {
             
             return cartListProducts;    
         } catch (err) {
-            console.log(`There has been an error: ${err}`);
+            errorLogger(err);
         }
     };
 
@@ -41,7 +42,7 @@ class CartsDAOMemory extends MemoryContainer {
                 return cartNotExists;
             }
         } catch (err) {
-            console.log(`There has been an error: ${err}`);
+            errorLogger(err);
         }
     }
 
@@ -52,7 +53,7 @@ class CartsDAOMemory extends MemoryContainer {
                 if (product.id == idProd) cart.products.splice(i, 1);
             });
         } catch (err) {
-            console.log(`There has been an error: ${err}`);
+            errorLogger(err);
         }
     };
 }

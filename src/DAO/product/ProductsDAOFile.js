@@ -1,5 +1,6 @@
 import FileContainer from "../../containers/FileDBContainer.js";
 import { promises as fs } from "fs";
+import { errorLogger } from "../../utils/loggers.js";
 
 let instance = null;
 
@@ -43,7 +44,7 @@ class ProductsDAOFile extends FileContainer {
 
             await fs.writeFile(this.route, JSON.stringify(data, null, 2));   
         } catch (err) {
-            console.log(`There has been an error: ${err}`);
+            errorLogger(err);
         }
     };
 
@@ -67,7 +68,7 @@ class ProductsDAOFile extends FileContainer {
 
             await fs.writeFile(this.route, JSON.stringify(data, null, 2));
         } catch (err) {
-            console.log(`There has been an error: ${err}`);
+            errorLogger(err);
         }
     };
 };

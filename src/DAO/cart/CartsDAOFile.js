@@ -1,6 +1,7 @@
 import { promises as fs } from "fs";
 import FileContainer from "../../containers/FileDBContainer.js";
 import ProductsDAOFile from "../product/ProductsDAOFile.js";
+import { errorLogger } from "../../utils/loggers.js";
 
 let instance = null;
 
@@ -22,7 +23,7 @@ class CartsDAOFile extends FileContainer {
             
             return cartListProducts;    
         } catch (err) {
-            console.log(`There has been an error: ${err}`);
+            errorLogger(err);
         }
     };
 
@@ -46,7 +47,7 @@ class CartsDAOFile extends FileContainer {
 
             await fs.writeFile(this.route, JSON.stringify(data, null, 2));
         } catch (err) {
-            console.log(`There has been an error: ${err}`);
+            errorLogger(err);
         }
     };
 
@@ -75,7 +76,7 @@ class CartsDAOFile extends FileContainer {
             data[index] = cart;
             await fs.writeFile(this.route, JSON.stringify(data, null, 2));
         } catch (err) {
-            console.log(`There has been an error: ${err}`);
+            errorLogger(err);
         }
     }
 
@@ -98,7 +99,7 @@ class CartsDAOFile extends FileContainer {
             data[index] = cart;
             await fs.writeFile(this.route, JSON.stringify(data, null, 2));
         } catch (err) {
-            console.log(`There has been an error: ${err}`);
+            errorLogger(err);
         }
     };
 };

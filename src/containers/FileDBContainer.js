@@ -1,4 +1,5 @@
 import { promises as fs } from "fs";
+import { errorLogger } from "../utils/loggers.js";
 
 class FileContainer {
     constructor(route) {
@@ -12,7 +13,7 @@ class FileContainer {
             
             return data;
         } catch (err) {
-            console.log(`There has been an error: ${err}`);
+            errorLogger(err);
         }
     };
 
@@ -24,7 +25,7 @@ class FileContainer {
             
             return findElem;
         } catch (err) {
-            console.log(`There has been an error: ${err}`);
+            errorLogger(err);
         }
     };
 
@@ -47,7 +48,7 @@ class FileContainer {
             data[index] = elem;
             await fs.writeFile(this.route, JSON.stringify(data, null, 2));    
         } catch (err) {
-            console.log(`There has been an error: ${err}`);
+            errorLogger(err);
         }
     }
 };

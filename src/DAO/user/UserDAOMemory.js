@@ -1,6 +1,7 @@
 import MemoryContainer from "../../containers/MemoryDBContainer.js";
 import MessageDAO from "../MessageDAO.js";
 import bcrypt from "bcrypt";
+import { errorLogger } from "../../utils/loggers.js";
 
 let instance = null;
 
@@ -27,7 +28,7 @@ class UsersDAOMemory extends MemoryContainer {
 
             return await this.save(user);
         } catch (err) {
-            console.log(err)
+            errorLogger(err)
         };
     };
 
@@ -36,7 +37,7 @@ class UsersDAOMemory extends MemoryContainer {
             const user = await this.list(id);
             return user;
         } catch (err) {
-            console.log(err);
+            errorLogger(err);
         };
     };
 
@@ -45,7 +46,7 @@ class UsersDAOMemory extends MemoryContainer {
             const user = await this.list(id);
             return user;
         } catch (err) {
-            console.log(err);
+            errorLogger(err);
         };
     };
 
@@ -60,7 +61,7 @@ class UsersDAOMemory extends MemoryContainer {
                 res.redirect("/api/login");
             };
         } catch (err) {
-            console.log(err)
+            errorLogger(err)
         };
     };
 
@@ -69,7 +70,7 @@ class UsersDAOMemory extends MemoryContainer {
             const checkUser = await this.elements.find(elem => elem.email == email);
             if (!checkUser) return done(null, false);
             bcrypt.compare(password, checkUser.password, (err, isMatch) => {
-                if (err) console.log(err);
+                if (err) errorLogger(err);
                 if (isMatch) return done(null, checkUser);
                 return done(null, false);
             });

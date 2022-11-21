@@ -2,6 +2,7 @@ import FileContainer from "../../containers/FileDBContainer.js";
 import MessageDAO from "../MessageDAO.js";
 import { promises as fs } from "fs";
 import bcrypt from "bcrypt";
+import { errorLogger } from "../../utils/loggers.js";
 
 let instance = null;
 
@@ -46,7 +47,7 @@ class UsersDAOFile extends FileContainer {
 
             await fs.writeFile(this.route, JSON.stringify(data, null, 2));
         } catch (err) {
-            console.log(err)
+            errorLogger(err)
         };
     };
 
@@ -55,7 +56,7 @@ class UsersDAOFile extends FileContainer {
             const user = await this.list(id);
             return user;
         } catch (err) {
-            console.log(err)
+            errorLogger(err)
         };
     };
 
@@ -64,7 +65,7 @@ class UsersDAOFile extends FileContainer {
             const user = await this.list(id);
             return user;
         } catch (err) {
-            console.log(err)
+            errorLogger(err)
         };
     };
 
@@ -89,7 +90,7 @@ class UsersDAOFile extends FileContainer {
                 res.redirect("/api/login");
             };
         } catch (err) {
-            console.log(err);
+            errorLogger(err);
         };
     };
 
@@ -101,12 +102,12 @@ class UsersDAOFile extends FileContainer {
 
             if (!checkUser) return done(null, false);
             bcrypt.compare(password, checkUser.password, (err, isMatch) => {
-                if (err) console.log(err);
+                if (err) errorLogger(err);
                 if (isMatch) return done(null, checkUser);
                 return done(null, false);
             });
         } catch (err) {
-            console.log(err);
+            errorLogger(err);
         };
     };
 };
