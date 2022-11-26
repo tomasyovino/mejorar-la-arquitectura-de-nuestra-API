@@ -15,6 +15,7 @@ class UsersDAOFile extends FileContainer {
         if (!instance) {
             instance = new UsersDAOFile();
         }
+        return instance;
     }
 
     async createUser(username, password, email, direction, birthDate, phoneNumber, file) {
