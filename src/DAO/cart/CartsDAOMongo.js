@@ -14,6 +14,7 @@ class CartsDAOMongo extends MongoDbContainer {
         if (!instance) {
             instance = new CartsDAOMongo();
         }
+        return instance;
     }
 
     async save() {
