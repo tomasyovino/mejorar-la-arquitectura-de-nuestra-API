@@ -7,6 +7,7 @@ class ProductsDAOMemory extends MemoryContainer {
         if (!instance) {
             instance = new ProductsDAOMemory();
         }
+        return instance;
     }
 }
 
