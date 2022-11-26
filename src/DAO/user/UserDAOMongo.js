@@ -15,6 +15,7 @@ class UsersDAOMongo extends MongoDbContainer {
         if (!instance) {
             instance = new UsersDAOMongo();
         }
+        return instance;
     }
 
     async createUser(username, password, email, direction, birthDate, phoneNumber, file) {
