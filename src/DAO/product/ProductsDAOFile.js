@@ -13,6 +13,7 @@ class ProductsDAOFile extends FileContainer {
         if (!instance) {
             instance = new ProductsDAOFile();
         }
+        return instance;
     }
 
     async save(elem) {
