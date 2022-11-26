@@ -10,6 +10,7 @@ class UsersDAOMemory extends MemoryContainer {
         if (!instance) {
             instance = new UsersDAOMemory();
         }
+        return instance;
     }
 
     async createUser(username, password, email, direction, birthDate, phoneNumber, file) {
