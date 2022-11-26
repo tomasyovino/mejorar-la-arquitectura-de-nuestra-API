@@ -17,6 +17,7 @@ class CartsDAOMemory extends MemoryContainer {
         if (!instance) {
             instance = new CartsDAOMemory();
         }
+        return instance;
     }
 
     async listProducts(id) {
