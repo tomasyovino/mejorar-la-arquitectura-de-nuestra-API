@@ -13,6 +13,7 @@ class ProductsDAOMongo extends MongoDbContainer {
         if (!instance) {
             instance = new ProductsDAOMongo();
         }
+        return instance;
     }
 
     async save(obj) {
