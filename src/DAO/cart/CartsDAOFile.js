@@ -14,6 +14,7 @@ class CartsDAOFile extends FileContainer {
         if (!instance) {
             instance = new CartsDAOFile();
         }
+        return instance;
     }
 
     async listProducts(id) {
